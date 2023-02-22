@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html lang="ko">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Small Business - Start Bootstrap Template</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link rel = "stylesheet" type = "text/css" href = "{% static 'styles.css' %}">
+        <link rel = "stylesheet" type = "text/css" href = "{% static 'bootstrap.min,css' %}">
+    </head>
+    <body>
+        <!-- Page Content-->
+        <div class="container px-4 px-lg-5">
+            <!-- Heading Row-->
+                        {% if content_list %}
+                        {% for content in content_list %}
+                        <hr/>
+                        <div class="row gx-4 gx-lg-5 align-items-center my-5">
+                        <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="https://dummyimage.com/900x400/dee2e6/6c757d.jpg" alt="..." /></div>
+                        <div class="col-lg-5">
+                        <h1 class="front-weight-light">{{content.title}}</h1>  <!--상품소개-->
+                        <p>{{content.content| truncatewords:30}}<p><!--상품설명-->
+                        <a class="btn btn-primary" href="{% url 'detail' content.id %}"> <!--상품소개 클릭--> 상세히보기</a>
+                        </div>
+                        {% endfor %}
+                        {% else %}
+                        <p>content가 없습니다.</p>
+                        {% endif %}
+                    </h1>
+                </div>
+{% endblock %}
+    </body>
+</html>
